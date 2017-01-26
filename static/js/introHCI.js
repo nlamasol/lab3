@@ -31,14 +31,23 @@ function projectClick(e) {
     e.preventDefault();
     // In an event handler, $(this) refers to 
     // the object that triggered the event 
-    $(this).css("background-color", "#000000");
+
 
     var containingProject = $(this).closest(".project");
     var description = $(containingProject).find(".project-description");
+    var black = false;
     if (description.length == 0) {
-      $(containingProject).append("<div class='project-description'><p>Description of the project.</p></div>");
+      $(containingProject).append("");
+      $(this).css("background-color", "#000000");
+      black = true;
     }
     else {
+        if(black == true){
+          $(this).css("background-color", "#FFFFFF");
+          black = false;
+        }
+        else{ $(this).css("background-color", "#000000");
+        black = true;}
         $(description).fadeToggle();
     }
 }
